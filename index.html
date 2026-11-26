@@ -36,7 +36,7 @@ h1{margin:0;font:var(--type-heading-2) var(--font-display)} h2{margin:var(--spac
 main .cyp-banner,.sheet .cyp-banner{padding:var(--space-3) var(--space-4);border-radius:var(--radius-control)}
 main{flex:1 1 auto;padding:var(--space-4) calc(var(--space-4) + env(safe-area-inset-right)) var(--space-6) calc(var(--space-4) + env(safe-area-inset-left));display:flex;flex-direction:column;gap:var(--space-4)}
 main.cyp-has-tabbar{padding-bottom:calc(var(--tabbar-height) + var(--space-8) + env(safe-area-inset-bottom))}
-main.fin-home{padding-bottom:var(--space-6)}
+main.fin-home{padding-bottom:var(--space-6)}.fin-stream{flex-direction:column;align-items:center;gap:2px;height:auto;min-height:56px;padding-top:var(--space-2);padding-bottom:var(--space-2)}.fin-stream__t{display:inline-flex;align-items:center;gap:var(--space-2)}.fin-stream__d{font-size:.85em;font-weight:400;opacity:.8}.fin-demo-leave{margin-left:var(--space-2);padding:2px 10px;min-height:0}@media (min-width:900px){main.fin-home{max-width:960px}.fin-streams{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}.fin-streams .fin-stream{min-height:110px}.fin-links{max-width:480px;margin-left:auto;margin-right:auto}}
 .cyp-chitenge{flex:none}
 /* pages: the tab bar at the bottom of a phone, a second row of the bar on a computer */
 .cyp-tabbar a{padding:0 var(--space-1);min-width:0;-webkit-tap-highlight-color:transparent}
@@ -136,7 +136,7 @@ img.photo{max-width:100%;border:1px solid var(--line)}
 <script src="core.js"></script>
 <script>
 'use strict';
-var FIN_VERSION = 'beta 1.10';
+var FIN_VERSION = 'beta 1.11';
 
 /* ================= small tools ================= */
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -814,7 +814,7 @@ function badge(n) { return n ? '<span class="cyp-badge" aria-hidden="true">' + (
 function head() {
   var sw = syncWord(), h = '<header class="cyp-appbar cyp-appbar--fixed"><span class="cyp-appbar__plate"><img src="ds/cyp-fin.svg" alt="CYP FIN"></span><span class="cyp-appbar__where" id="bar-where">' + esc(pageName()) + '</span>' + (comCan() ? '<button type="button" class="cyp-appbar__action" id="bar-comment" aria-label="Comment" data-a="comStart">' + di('message-square') + '</button>' : '') + '<span class="cyp-appbar__sync" id="sync-state">' + di(sw[0]) + sw[1] + '</span></header>';
   if (S.me && S.ui.screen === 'main') { var n = tabCounts(); h += '<div class="cyp-nav" role="navigation" aria-label="Pages">' + tabsFor().map(function (t) { return '<a class="label-caps" href="#" data-a="tab" data-id="' + t[0] + '"' + (S.ui.tab === t[0] ? ' aria-current="page"' : '') + '>' + t[1] + badge(n[t[0]]) + '</a>'; }).join('') + '</div>'; }
-  if (S.cfg && S.cfg.mode === 'demo') h += '<div class="cyp-banner cyp-banner--warn demo">' + di('info') + 'Demo: invented data. It stays on this phone.' + (S.shared ? ' Only your comments are sent.' : '') + '</div>';
+  if (S.cfg && S.cfg.mode === 'demo') h += '<div class="cyp-banner cyp-banner--warn demo">' + di('info') + 'Demo: invented data. It stays on this device.' + (S.shared ? ' Only your comments are sent.' : '') + '</div>';
   /* a database kept on this device only: people, requests and comments written here reach nobody else */
   if (S.cfg && S.cfg.mode === 'local') h += '<div class="cyp-banner cyp-banner--warn localbar" id="local-bar">' + di('triangle-alert') + 'Test on this device only. Not the shared database.</div>';
   if (S.me) {
@@ -876,13 +876,16 @@ function scrLogin() {
   if (S.ui.msg) h += '<div class="cyp-banner cyp-banner--warn box warn">' + di('triangle-alert') + '' + esc(S.ui.msg) + '</div>';
   if (!k) {
     var sico = { ask: 'plus', review: 'search', approve: 'check', admin: 'settings' };
-    h = '<main class="fin-home">' + (S.ui.msg ? '<div class="cyp-banner cyp-banner--warn box warn">' + di('triangle-alert') + esc(S.ui.msg) + '</div>' : '') + '<h1>What do you need to do?</h1>' + (S.users.length ? '' : noList) + '<div class="list">' + STREAMS.map(function (st, n) {
-      return '<button type="button" class="cyp-btn cyp-btn--block' + (n ? '' : ' cyp-btn--primary') + ' btn stream" id="st-' + st[0] + '" data-a="stream" data-id="' + st[0] + '">' + di(sico[st[0]]) + st[1] + '</button>';
-    }).join('') + '</div><div class="list fin-links"><div class="lab">Other</div>';
+    /* one line under each button: who it is for, so nobody has to guess */
+    var sdesc = { ask: 'Ask for money for your section', review: 'Check requests before they go on', approve: 'Director: give the final yes or no', admin: 'People, PINs and settings' };
+    var sbtn = function (st, pri) { return '<button type="button" class="cyp-btn cyp-btn--block' + (pri ? ' cyp-btn--primary' : '') + ' btn stream fin-stream" id="st-' + st[0] + '" data-a="stream" data-id="' + st[0] + '"><span class="fin-stream__t">' + di(sico[st[0]]) + st[1] + '</span><span class="fin-stream__d">' + sdesc[st[0]] + '</span></button>'; };
+    h = '<main class="fin-home">' + (S.ui.msg ? '<div class="cyp-banner cyp-banner--warn box warn">' + di('triangle-alert') + esc(S.ui.msg) + '</div>' : '') + '<h1>What do you need to do?</h1>' + (S.users.length ? '' : noList) + '<div class="list fin-streams">' + STREAMS.filter(function (st) { return st[0] !== 'admin'; }).map(function (st, n) { return sbtn(st, !n); }).join('') + '</div><div class="list fin-links"><div class="lab">Other</div>';
+    h += sbtn(STREAMS[3], false);
     if (S.cfg.mode === 'demo' && S.shared) h += '<button type="button" class="cyp-btn cyp-btn--block btn" data-a="leaveDemo">Leave the demo</button>';
-    else h += '<button type="button" class="cyp-btn cyp-btn--block btn" data-a="forget">Use another link</button>';
+    else if (S.cfg.mode === 'demo') h += '<button type="button" class="cyp-btn cyp-btn--block btn" data-a="forget">Leave the demo</button>';
+    else h += '<button type="button" class="cyp-btn cyp-btn--block btn" data-a="forget">Switch to another CYP FIN link</button><span class="cyp-field__help">Only if you were sent a new link.</span>';
     if (S.cfg.mode === 'shared') h += '<button type="button" class="cyp-btn cyp-btn--block btn" data-a="demo">Try the demo</button><span class="cyp-field__help">Invented data.</span>';
-    if (comCan() && !S.picking) h += '<button type="button" class="cyp-btn cyp-btn--block btn" id="com-open" data-a="comStart">' + di('message-square') + 'Comment</button>';
+    /* Comment lives in the top bar; no second button here */
     return h + '</div><span class="cyp-field__help s m center">CYP FIN ' + FIN_VERSION + '</span></main><div class="cyp-chitenge"></div>';
   } else if (!S.ui.hits) {
     var ppl = streamPeople(k);

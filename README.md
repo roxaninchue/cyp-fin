@@ -7,4 +7,4 @@ This repository holds only the app. No data, no PINs, no names: the data stay in
 - `index.html`, `core.js`, `budget.js`, `sw.js`, `manifest.webmanifest`, `icons/`: the app, served by GitHub Pages.
 - `Code.gs`: the script of the shared database (Google Sheet + Apps Script). `core.js` is the same text as the first part of `Code.gs`: change them together.
 
-Version: beta 1.10 (script version 25)
+Version: beta 1.11 (script version 25)
