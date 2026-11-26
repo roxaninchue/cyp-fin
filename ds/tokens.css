@@ -1,0 +1,126 @@
+/* CYP - generated from tokens.json */
+:root, [data-theme="light"] {
+  --surface: #ffffff;
+  --surface-soft: #f2f5f9;
+  --surface-band: #e3e3e3;
+  --ink: #14213d;
+  --ink-muted: #4a5568;
+  --on-dark: #ffffff;
+  --line: #d5dbe6;
+  --line-strong: #8a94a6;
+  --blue-sky: #0091d5;
+  --blue: #0b5fa5;
+  --navy: #0a2a5c;
+  --yellow: #ffed00;
+  --crimson: #b8173c;
+  --purple: #7e226e;
+  --royal: #1d4593;
+  --cat-blue: #3a5ea8;
+  --cat-yellow: #ecc000;
+  --cat-green: #319536;
+  --cat-orange: #e57608;
+  --cat-mauve: #c179b0;
+  --cat-olive: #aeb616;
+  --cat-ochre: #a17b1a;
+  --ok: #1a6b2a;
+  --ok-soft: #e4f3e6;
+  --warn: #7a4d00;
+  --warn-soft: #fff3cf;
+  --danger: #a8171c;
+  --danger-soft: #fde7e6;
+  --chitenge-green: #198a00;
+  --chitenge-orange: #ef7d00;
+  --chitenge-red: #de2010;
+  --chitenge-black: #111111;
+  --place-luigi: var(--cat-blue);
+  --place-minsundu: var(--cat-yellow);
+  --place-nkwazi: var(--cat-green);
+  --place-community-school: var(--cat-orange);
+  --place-holy-family: var(--cat-mauve);
+  --place-mary-christine: var(--cat-olive);
+  --place-ukubalula: var(--cat-ochre);
+  --place-other: var(--surface-band);
+  --outcome-1: var(--crimson);
+  --outcome-2: var(--purple);
+  --outcome-3: var(--royal);
+  --focus: var(--navy);
+  --shadow-card: 0 2px 12px rgba(20, 33, 61, 0.14);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-0: 0;
+  --radius-control: 4px;
+  --radius-disc: 50%;
+  --touch-min: 48px;
+  --bar-height: 56px;
+  --tabbar-height: 56px;
+  --content-narrow: 720px;
+  --content-wide: 1200px;
+  --screen-computer: 900px;
+  --badge-size: 20px;
+  --avatar-size: 48px;
+  --control-compact: 36px;
+  --disc-sm: 32px;
+  --disc-lg: 64px;
+  --rule-heading: 3px;
+  --page-a4: 794px;
+  --type-cover-title: 700 44px/48px;
+  --type-chapter-number: 700 72px/72px;
+  --type-opener-title: 700 32px/38px;
+  --type-figure: 700 40px/44px;
+  --type-heading-1: 700 26px/32px;
+  --type-heading-2: 700 20px/26px;
+  --type-heading-3: 700 16px/22px;
+  --type-button: 500 16px/20px;
+  --type-label-caps: 700 12px/16px;
+  --type-body-report: 300 15px/24px;
+  --type-body: 400 16px/24px;
+  --type-body-strong: 700 16px/24px;
+  --type-quote: italic 600 15px/24px;
+  --type-small: 400 13px/18px;
+  --type-small-strong: 700 13px/18px;
+  --type-caption: 400 11px/16px;
+  --track-caps: 0.04em;
+  --motion-press: 80ms;
+  --motion-state: 150ms;
+  --motion-tab: 200ms;
+  --motion-sheet: 260ms;
+  --motion-page: 320ms;
+  --motion-bars: 700ms;
+  --motion-stagger: 30ms;
+  --ease-enter: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-grow: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-display: "Ubuntu", "Trebuchet MS", system-ui, sans-serif;
+  --font-text: "Open Sans", "Segoe UI", system-ui, sans-serif;
+}
+.cover-title { font-family: var(--font-display); font-size: 44px; line-height: 48px; font-weight: 700; }
+.chapter-number { font-family: var(--font-display); font-size: 72px; line-height: 72px; font-weight: 700; }
+.opener-title { font-family: var(--font-display); font-size: 32px; line-height: 38px; font-weight: 700; }
+.figure { font-family: var(--font-display); font-size: 40px; line-height: 44px; font-weight: 700; }
+.heading-1 { font-family: var(--font-display); font-size: 26px; line-height: 32px; font-weight: 700; }
+.heading-2 { font-family: var(--font-display); font-size: 20px; line-height: 26px; font-weight: 700; }
+.heading-3 { font-family: var(--font-display); font-size: 16px; line-height: 22px; font-weight: 700; }
+.button { font-family: var(--font-display); font-size: 16px; line-height: 20px; font-weight: 500; }
+.label-caps { font-family: var(--font-display); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.04em; }
+.body-report { font-family: var(--font-text); font-size: 15px; line-height: 24px; font-weight: 300; }
+.body { font-family: var(--font-text); font-size: 16px; line-height: 24px; font-weight: 400; }
+.body-strong { font-family: var(--font-text); font-size: 16px; line-height: 24px; font-weight: 700; }
+.quote { font-family: var(--font-text); font-size: 15px; line-height: 24px; font-weight: 600; font-style: italic; }
+.small { font-family: var(--font-text); font-size: 13px; line-height: 18px; font-weight: 400; }
+.small-strong { font-family: var(--font-text); font-size: 13px; line-height: 18px; font-weight: 700; }
+.caption { font-family: var(--font-text); font-size: 11px; line-height: 16px; font-weight: 400; }
+@font-face { font-family: "Ubuntu"; src: url("fonts/Ubuntu-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Ubuntu"; src: url("fonts/Ubuntu-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-SemiBoldItalic.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("fonts/OpenSans-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
